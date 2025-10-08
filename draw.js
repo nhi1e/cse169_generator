@@ -15,8 +15,6 @@ function drawPetalStroke(pg, x, y, angle, length, width, fromC, toC) {
 			(noise(nx * noiseScale, ny * noiseScale) - 0.5) * width * curveStrength;
 		path.push({ x: nx + sway, y: ny });
 	}
-
-	// painterly layering
 	for (let pass = 0; pass < 3; pass++) {
 		pg.noFill();
 		pg.strokeWeight(random(3, 6));
@@ -48,10 +46,8 @@ function drawFlowBG(_yOffset) {
 		0.25
 	);
 
-	// big horizontal “acrylic” swaths
 	drawMonetWater(_mainColorSet, _yOffset);
 
-	// thin shimmer lines on top
 	drawShimmerBands(_yOffset);
 }
 function drawMonetWater(palette) {
@@ -107,9 +103,7 @@ function drawFlowLine(_x, _y, _length, _thickness, _fromC, _toC, _offset) {
 	}
 }
 
-// === new: reflections ===
 function drawReflectionPad(pg, x, y, size, palette) {
-	// reflect across a soft “waterline” jittered by noise
 	const wobble = (yy) => 6 * (noise(x * 0.01, yy * 0.02) - 0.5);
 	const steps = 10;
 	for (let i = 0; i < steps; i++) {
@@ -154,12 +148,10 @@ function drawReflectionFlower(pg, x, y, palette) {
 		}
 	}
 }
-// === Monet-like shimmer bands ===
 function drawShimmerBands(_yOffset) {
 	tempBG.noStroke();
 
-	// how many brush marks to paint
-	const marks = 700; // fewer, bolder strokes
+	const marks = 700;
 
 	for (let i = 0; i < marks; i++) {
 		const x = random(width);
@@ -202,7 +194,6 @@ function drawShimmerBands(_yOffset) {
 	tempBG.filter(BLUR, 0.7);
 }
 
-// === painterly noise line ===
 function drawNoiseLine(x, y, dir, len, fromC, toC) {
 	const steps = int(len / 2);
 	let nx = x,
@@ -289,7 +280,6 @@ function drawVignette() {
 	pop();
 }
 
-// === Painterly Pond Grass Bush (visible on dark water + rich variation) ===
 function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 	const baseColor = palette.plantColorA.copy();
 	const midColor = palette.plantColorB.copy();
@@ -307,7 +297,6 @@ function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 		const angle = random(-20, 20) + random(-10, 10);
 		const curveBend = random(-8, 8);
 
-		// — color gradient with visible brightness shift —
 		const fromC = baseColor.copy();
 		const toC = tipColor.copy();
 
@@ -358,8 +347,6 @@ function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 
 			prevC = nowC.copy();
 		}
-
-		// dark core shadow line
 		if (random() < 0.6) {
 			const shadowC = baseColor.copy();
 			shadowC.b *= 0.4;
@@ -374,8 +361,6 @@ function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 			);
 		}
 	}
-
-	// === base shading + light halo ===
 	pg.noStroke();
 	const rootC = baseColor.copy();
 	rootC.a = 0.45;

@@ -1,3 +1,4 @@
+// taken from https://easings.net/
 function easeOutSine(x) {
 	return Math.sin((x * Math.PI) / 2);
 }
