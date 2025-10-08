@@ -101,24 +101,6 @@ class PlantLili {
 	}
 
 	drawStep() {
-		//if (this.nowStep >= this.totalSteps)
-		//    return false;
-
-		//let t = this.nowStep / this.totalSteps;
-		//let animatedT = this.easingFunc(t);
-
-		//// let rotNoise = noise(nowX * 0.001, nowY * 0.001) * 720;
-		//let nowColor = NYLerpColor(this.fromColor, this.toColor, t);
-
-		//noStroke();
-		//fill(nowColor.h, nowColor.s, nowColor.b, nowColor.a);
-
-		//let nowX = lerp(this.fromX, this.toX, animatedT);
-		//let nowY = lerp(this.fromY, this.toY, t);
-
-		//circle(nowX, nowY, 3);
-		//this.nowStep++;
-
 		return false;
 	}
 
@@ -210,15 +192,6 @@ class Fish {
 		this.bodyW = bodyW;
 		this.bodyH = bodyW * 0.25 + random(3);
 		this.transparency = 255;
-
-		//// palette similar to koi
-		//this.mainColor = color(random(15, 35), random(50, 70), random(90, 100));
-		//this.stripeColor = color(hue(this.mainColor) + random(-20, 20), random(30, 60), random(60, 90));
-		//this.outlineColor = color(25, 5, 95);   // soft cream outline
-		//this.finColor = color(hue(this.mainColor) + random(-15, 15), random(20, 40), 100, 0.4);
-
-		// --- koi color palette integration ---
-		// === pick fish palette from active color set ===
 		const fishSet = _mainColorSet.fish;
 
 		this.mainColor = fishSet.mainColor.color();

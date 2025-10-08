@@ -2,7 +2,6 @@
 function getRandomColorSet() {
 	let sets = [];
 
-	// --- Deep Blue + Warm Koi Orange Palette (Image 1) ---
 	sets.push({
 		// Water & reflections
 		waterColor: NYColorFromHex("#022F40"),
@@ -29,7 +28,6 @@ function getRandomColorSet() {
 		lightDapple: NYColorFromHex("#D4E1E0"),
 		padReflection: NYColorFromHex("#A3A5C3"),
 
-		// 🐟 Fish (based on image #1)
 		fish: {
 			mainColor: NYColorFromHex("#F29C50"), // orange-gold
 			stripeColor: NYColorFromHex("#F25F29"), // vivid coral-orange
@@ -39,7 +37,6 @@ function getRandomColorSet() {
 		},
 	});
 
-	// --- Fiery Koi Palette (Image 2) ---
 	sets.push({
 		waterGround: NYColorFromHex("#050606"),
 		waterColor: NYColorFromHex("#495E6D"),
@@ -61,7 +58,6 @@ function getRandomColorSet() {
 
 		lightDapple: NYColorFromHex("#E69100"),
 
-		// 🐟 Fish (based on image #2)
 		fish: {
 			mainColor: NYColorFromHex("#E70F00"), // bright red-orange
 			stripeColor: NYColorFromHex("#D75D00"), // deep orange stripe
@@ -71,7 +67,6 @@ function getRandomColorSet() {
 		},
 	});
 
-	// --- Muted Earthy Koi Palette (Dark Water Variant) ---
 	sets.push({
 		waterGround: new NYColor(0, 0, 3), // almost black
 		waterColor: new NYColor(0, 0, 3),
@@ -92,7 +87,6 @@ function getRandomColorSet() {
 
 		lightDapple: NYColorFromHex("#ffffff"),
 
-		// 🐟 Fish (same as your muted earthy koi)
 		fish: {
 			mainColor: NYColorFromHex("#C05746"), // brick orange
 			stripeColor: NYColorFromHex("#93867F"), // taupe stripe
@@ -102,7 +96,6 @@ function getRandomColorSet() {
 		},
 	});
 
-	// --- Forest Garden Monet Palette (new, from green + clay tone references) ---
 	sets.push({
 		// Water & reflections
 		waterGround: NYColorFromHex("#384330"), // deep moss green

@@ -21,7 +21,6 @@ async function setup() {
 	noiseSeed(SEED);
 	stateToURL(); // immediately store it in the link
 
-	// ✅ check if a seed was passed from user input (stored in localStorage)
 	const storedSeed = localStorage.getItem("pondSeed");
 	if (storedSeed) {
 		SEED = int(storedSeed);

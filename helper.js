@@ -141,18 +141,14 @@ let seedInput, applyBtn;
 
 function makeUI() {
 	const pad = 8;
-
-	// 🌊 Share button
 	const shareBtn = createButton("Share Pond 🌊");
 	shareBtn.position(pad, pad);
 	shareBtn.mousePressed(shareLink);
 
-	// 🌱 Seed input
 	seedInput = createInput(SEED.toString());
 	seedInput.position(pad, pad + 40);
 	seedInput.size(120);
 
-	// 🔁 Load Seed
 	applyBtn = createButton("Load Seed");
 	applyBtn.position(pad + 130, pad + 40);
 	applyBtn.mousePressed(() => {
@@ -161,14 +157,13 @@ function makeUI() {
 		location.reload();
 	});
 
-	const saveBtn = createButton("Save Image 🖼️");
+	const saveBtn = createButton("Save Image");
 	saveBtn.position(pad, pad + 80);
 	saveBtn.mousePressed(() => {
 		const filename = "pond_(seed_=_" + SEED + ")";
 		saveCanvas(filename, "png");
 	});
 
-	// 🧹 Clear Seed (optional)
 	const clearBtn = createButton("Clear Seed");
 	clearBtn.position(pad + 130, pad + 80);
 	clearBtn.mousePressed(() => {
@@ -185,7 +180,6 @@ function stateToURL() {
 	history.replaceState(null, "", newUrl);
 }
 
-// --- read ?seed=12345 from URL and load it ---
 function loadSeedFromURL() {
 	const params = new URLSearchParams(location.search);
 	if (params.has("seed")) {
