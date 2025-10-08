@@ -75,8 +75,6 @@ async function setup() {
 			);
 		}
 	}
-
-	// water shimmer build-up while stems “grow”
 	let totalSteps = int(waterBaseTall / 0.6);
 	for (let i = 0; i < totalSteps; i++) {
 		for (let j = 0; j < lilis.length; j++) lilis[j].drawStep();
@@ -90,17 +88,14 @@ async function setup() {
 		}
 		await sleep(1);
 	}
-	// --- Base water and shimmer only (no stem growth) ---
 	tempBG.clear();
 	drawFlowBG(frameCount); // watery strands
 	drawShimmerBands(frameCount); // Monet shimmer
 	image(tempBG, 0, 0);
 
-	// --- FISH (under pads, but above base water) ---
 	spawnFishes(int(random(3, 6)));
 	for (let f of fishes) f.draw(this);
 
-	// === lily leaves ===
 	for (let i = 0; i < lilis.length; i++) {
 		if (lilis[i].type === "LEAF") {
 			lilis[i].drawLeaf();
@@ -115,17 +110,12 @@ async function setup() {
 		}
 	}
 
-	// draw water shimmer first (so fish look under water)
 	drawFlowBG(frameCount);
 	drawShimmerBands(frameCount);
 
-	// now draw fishes directly onto main canvas, not tempBG
 	push();
-	blendMode(OVERLAY); // or try SCREEN for brighter shimmer look
+	blendMode(OVERLAY);
 	pop();
-
-	// finish any remaining stems
-	for (let i = 0; i < lilis.length; i++) while (lilis[i].drawStep()) {}
 
 	// === flowers ===
 	for (let i = 0; i < lilis.length; i++) {

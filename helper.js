@@ -115,7 +115,6 @@ function shareLink() {
 }
 
 // --- stateToURL ---
-// this function encodes the current random seed so that every pond has a shareable link
 function stateToURL() {
 	const params = new URLSearchParams();
 	params.set("seed", SEED);
@@ -124,7 +123,6 @@ function stateToURL() {
 }
 
 // --- saveWithWatermark ---
-// saves the current canvas as a PNG with small text of your seed info
 function saveWithWatermark() {
 	push();
 	noStroke();

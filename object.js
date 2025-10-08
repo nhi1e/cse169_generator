@@ -118,11 +118,9 @@ class PlantLili {
 		base.slightRandomize(8, 10, 12);
 		highlight.slightRandomize(6, 8, 6);
 
-		// 🎚 Adaptive stroke density — bigger pads = more brush marks
 		const density = map(baseSize, 50, 300, 120, 400, true);
 		const strokeCount = int(random(density * 0.8, density * 1.2));
 
-		// 🎨 Base underpaint to tie the pad together (soft layer)
 		noStroke();
 		fill(base.h, base.s, base.b, 0.5);
 		ellipse(0, 0, baseSize * 0.75, baseSize * 0.5);
@@ -165,8 +163,6 @@ class PlantLili {
 		}
 
 		blendMode(BLEND);
-
-		// 💡 subtle highlight glaze to suggest wet surface
 		noFill();
 		stroke(highlight.h, highlight.s * 0.5, highlight.b * 1.1, 0.2);
 		strokeWeight(2);
@@ -243,7 +239,6 @@ class Fish {
 		);
 		this.renderBody(pg, 0.6, 0.25);
 
-		// 🐟 Koi spots scattered all over (kept inside body)
 		const spotCount = int(random(10, 20));
 		for (let i = 0; i < spotCount; i++) {
 			const t = random();
