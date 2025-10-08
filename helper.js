@@ -93,12 +93,25 @@ function NYColorFromHex(hex, alpha = 1.0) {
 }
 
 function shareLink() {
-	stateToURL();
-	const url = location.href;
-	navigator.clipboard.writeText(url);
-	alert(
-		`🌿 Pond link copied!\n${url}\n\nSend it to friends — it’ll recreate your exact pond.`
-	);
+	// make sure the current seed is encoded in the URL
+	const params = new URLSearchParams();
+	params.set("seed", SEED);
+	const url = `${location.origin}${location.pathname}?${params.toString()}`;
+
+	// copy the URL to clipboard
+	navigator.clipboard
+		.writeText(url)
+		.then(() => {
+			alert(
+				`Pond link copied!\n\n${url}\n\nShare it — anyone who opens it will see your exact pond!`
+			);
+		})
+		.catch((err) => {
+			console.error("Clipboard copy failed:", err);
+			alert(
+				"Couldn't copy link automatically. You can copy it manually:\n" + url
+			);
+		});
 }
 
 // --- stateToURL ---
