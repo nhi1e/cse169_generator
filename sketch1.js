@@ -15,6 +15,12 @@ async function setup() {
 	pixelDensity(1);
 	colorMode(HSB);
 
+	loadSeedFromURL();
+	if (!SEED) SEED = int(Date.now() % 1e9); // fallback random seed
+	randomSeed(SEED);
+	noiseSeed(SEED);
+	stateToURL(); // immediately store it in the link
+
 	// ✅ check if a seed was passed from user input (stored in localStorage)
 	const storedSeed = localStorage.getItem("pondSeed");
 	if (storedSeed) {

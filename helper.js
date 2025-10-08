@@ -93,11 +93,11 @@ function NYColorFromHex(hex, alpha = 1.0) {
 }
 
 function shareLink() {
-	const shareText = `🌿 Pond seed: ${SEED}\nPaste this number into the "seed" box to recreate it!`;
-	navigator.clipboard.writeText(shareText);
+	stateToURL();
+	const url = location.href;
+	navigator.clipboard.writeText(url);
 	alert(
-		"Seed copied! Share this with friends so they can recreate your pond:\n" +
-			SEED
+		`🌿 Pond link copied!\n${url}\n\nSend it to friends — it’ll recreate your exact pond.`
 	);
 }
 
@@ -162,4 +162,26 @@ function makeUI() {
 		localStorage.removeItem("pondSeed");
 		location.reload();
 	});
+}
+
+// --- encode the current seed into the URL ---
+function stateToURL() {
+	const params = new URLSearchParams();
+	params.set("seed", SEED);
+	const newUrl = `${location.origin}${location.pathname}?${params.toString()}`;
+	history.replaceState(null, "", newUrl);
+}
+
+// --- read ?seed=12345 from URL and load it ---
+function loadSeedFromURL() {
+	const params = new URLSearchParams(location.search);
+	if (params.has("seed")) {
+		const urlSeed = int(params.get("seed"));
+		if (!isNaN(urlSeed)) {
+			SEED = urlSeed;
+			randomSeed(SEED);
+			noiseSeed(SEED);
+			console.log("Loaded seed from URL:", SEED);
+		}
+	}
 }
