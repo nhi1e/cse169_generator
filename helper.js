@@ -76,12 +76,6 @@ function processHue(_hue) {
 	return result;
 }
 
-// get angle between two points and return in degrees
-function getAngle(_x1, _y1, _x2, _y2) {
-	let xDiff = _x2 - _x1;
-	let yDiff = _y2 - _y1;
-	return (atan2(yDiff, xDiff) * 180) / PI + 90;
-}
 
 function NYColorFromHex(hex, alpha = 1.0) {
 	// temporarily use p5 color() to decode
@@ -114,32 +108,9 @@ function shareLink() {
 		});
 }
 
-// --- stateToURL ---
-function stateToURL() {
-	const params = new URLSearchParams();
-	params.set("seed", SEED);
-	const newUrl = `${location.origin}${location.pathname}?${params.toString()}`;
-	history.replaceState(null, "", newUrl);
-}
-
-// --- saveWithWatermark ---
-function saveWithWatermark() {
-	push();
-	noStroke();
-	fill(0, 0, 0, 0.4);
-	rect(10, height - 32, 220, 22, 6);
-	fill(0, 0, 100, 0.9);
-	textSize(12);
-	textAlign(LEFT, CENTER);
-	text(`pond • seed: ${SEED}`, 18, height - 22);
-	pop();
-	saveCanvas("pond_" + SEED, "png");
-}
-let seedInput, applyBtn;
-
 function makeUI() {
 	const pad = 8;
-	const shareBtn = createButton("Share Pond 🌊");
+	const shareBtn = createButton("Share Pond");
 	shareBtn.position(pad, pad);
 	shareBtn.mousePressed(shareLink);
 
@@ -168,9 +139,13 @@ function makeUI() {
 		localStorage.removeItem("pondSeed");
 		location.reload();
 	});
+	const readmeBtn = createButton("Readme");
+	readmeBtn.position(pad, pad + 120);
+	readmeBtn.mousePressed(() => {
+		window.open("https://github.com/nhi1e/cse169_generator#readme", "_blank");
+	});
 }
 
-// --- encode the current seed into the URL ---
 function stateToURL() {
 	const params = new URLSearchParams();
 	params.set("seed", SEED);

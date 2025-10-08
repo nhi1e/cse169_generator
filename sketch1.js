@@ -152,7 +152,7 @@ async function setup() {
 	// vignette
 	drawVignette();
 
-	makeUI(); // builds the small buttons (Share, Save, etc.)
+	makeUI();
 }
 
 // === util ===
