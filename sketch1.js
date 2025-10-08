@@ -27,8 +27,6 @@ async function setup() {
 	} else {
 		SEED = int(Date.now() % 1e9);
 	}
-
-	// === new: per-refresh seed for repeatable randomness ===
 	//SEED = int((Date.now() % 1e9));
 	randomSeed(SEED);
 	noiseSeed(SEED);
@@ -155,11 +153,6 @@ async function setup() {
 	drawVignette();
 
 	makeUI(); // builds the small buttons (Share, Save, etc.)
-}
-
-function draw() {
-	// static painting after build
-	// optional: slow koi movement
 }
 
 // === util ===
