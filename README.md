@@ -1,3 +1,10 @@
+**Usage**
+- Click “Clear Seed” to generate a completely new random pond.
+- Or, type any number into the Seed box and press “Load Seed” to recreate or explore variations.
+- Click “Share Pond” to copy a URL that embeds your current seed —
+anyone opening that link will see your exact pond configuration.
+- Click “Save Image” to download your pond as a PNG file, named with your seed for easy sharing.
+
 **My A Priori Artifact**
 
 <img src="assets/a_priori.png" width="400" alt="Original Pond">
