@@ -1,4 +1,8 @@
 // --- color.js ---
+
+// used chatgpt to help generate a pallete
+// prompt: how do i organize my color palette for better usability
+//         generate another color pallete based on my preexisting ones
 function getRandomColorSet() {
 	let sets = [];
 

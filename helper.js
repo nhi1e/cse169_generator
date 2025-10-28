@@ -92,7 +92,7 @@ function shareLink() {
 	params.set("seed", SEED);
 	const url = `${location.origin}${location.pathname}?${params.toString()}`;
 
-	// copy the URL to clipboard
+	// chatgpt prompt: how to copy to clipboard html
 	navigator.clipboard
 		.writeText(url)
 		.then(() => {
@@ -126,6 +126,7 @@ function makeUI() {
 		location.reload();
 	});
 
+	// chatgpt: how to save canvas as image in p5js
 	const saveBtn = createButton("Save Image");
 	saveBtn.position(pad, pad + 80);
 	saveBtn.mousePressed(() => {

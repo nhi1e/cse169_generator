@@ -21,6 +21,7 @@ async function setup() {
 	noiseSeed(SEED);
 	stateToURL(); // immediately store it in the link
 
+	// chatgpt prompt: getting error from empty seed
 	const storedSeed = localStorage.getItem("pondSeed");
 	if (storedSeed) {
 		SEED = int(storedSeed);
@@ -74,13 +75,14 @@ async function setup() {
 		}
 	}
 	let totalSteps = int(waterBaseTall / 0.6);
+	//chat gpt: how do i layer my drawing steps to avoid fish not rendering. reorder function calls?
 	for (let i = 0; i < totalSteps; i++) {
 		for (let j = 0; j < lilis.length; j++) lilis[j].drawStep();
 
 		if (i % 18 === 0) {
 			tempBG.clear();
 			drawFlowBG(i); // watery strands
-			drawShimmerBands(i); // Monet shimmer
+			drawShimmerBands(i); 
 
 			image(tempBG, 0, 0);
 		}
@@ -88,7 +90,7 @@ async function setup() {
 	}
 	tempBG.clear();
 	drawFlowBG(frameCount); // watery strands
-	drawShimmerBands(frameCount); // Monet shimmer
+	drawShimmerBands(frameCount); 
 	image(tempBG, 0, 0);
 
 	spawnFishes(int(random(3, 6)));

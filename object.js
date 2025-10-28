@@ -103,7 +103,7 @@ class PlantLili {
 	drawStep() {
 		return false;
 	}
-
+	//chat gpt: i want to add highlighted effect to the leaves, the highilight color should be based on the base color
 	drawLeaf() {
 		const cx = this.toX;
 		const cy = this.toY;

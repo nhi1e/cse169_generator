@@ -1,6 +1,8 @@
 // --- draw.js---
 let WATER_THICKNESS_MULT = 4.0;
 
+// used chatGPT to debug quadratic vertex drawing issue
+// prompt: petal strokes are segmented rn, how do i draw a smooth curved line using vertex and quadraticVertex
 function drawPetalStroke(pg, x, y, angle, length, width, fromC, toC) {
 	const steps = int(length / 3);
 	const curveStrength = random(0.2, 0.6);
@@ -148,6 +150,9 @@ function drawReflectionFlower(pg, x, y, palette) {
 		}
 	}
 }
+
+// used chatgpt to help refine this function
+// prompt: how can i mix color from my paellete to create a brush stroke effect
 function drawShimmerBands(_yOffset) {
 	tempBG.noStroke();
 
@@ -160,7 +165,6 @@ function drawShimmerBands(_yOffset) {
 		const h = random(10, 25); // thicker height
 		const angle = random(TWO_PI);
 
-		// richer color mixing from your palette
 		const base = _mainColorSet.waterColor.color();
 		const mixA = _mainColorSet.waterFlowColor.color();
 		const mixB = _mainColorSet.waterShimmer.color();
@@ -236,6 +240,8 @@ function drawFishLayer(pg) {
 	}
 }
 
+// used chatGPT to create light effect function
+// prompt: create function to imitate light spots
 function drawDappledLight(pg, palette) {
 	pg.noStroke();
 	const spots = 40;
@@ -280,6 +286,7 @@ function drawVignette() {
 	pop();
 }
 
+//chat gpt: help debug the grass not drawing issue
 function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 	const baseColor = palette.plantColorA.copy();
 	const midColor = palette.plantColorB.copy();
@@ -300,7 +307,7 @@ function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 		const fromC = baseColor.copy();
 		const toC = tipColor.copy();
 
-		// exaggerate color curve so it stands out on dark water
+		// chatgpt: exaggerate color curve so it stands out on dark water
 		toC.h = processHue(toC.h + random(-15, 15));
 		toC.s = constrain(toC.s * random(0.9, 1.2), 40, 100);
 		toC.b = constrain(toC.b * random(1.3, 1.6), 0, 100);
@@ -331,7 +338,7 @@ function drawGrassBush(pg, x, y, palette, scale = 3.0) {
 				nowC
 			);
 
-			// occasionally draw twin blade
+			// chatgpt: how can i make blade frequencies be more natural
 			if (random() < 0.25 && p === 0) {
 				drawPetalStroke(
 					pg,
