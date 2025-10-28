@@ -19,5 +19,5 @@ ChatGPT assisted with:
 - Refactoring the original single-file sketch into modular files (`draw.js`, `object.js`, `fish.js`, etc.) for clarity and maintainability.
 - Debugging rendering issues
 - Guidance for implementing specific techniques to achieve painting like effect like water effects and layering techniques
-- Designing functions `drawPetalStroke()`, `drawLilyFlower()`, `drawFish()` to emulate painterly brush strokes and natural variation. Designing helper functions for converting colors/choosing palettes
+- Designing functions `drawPetalStroke()`, `drawLeaf()`, `Fish` class to emulate painterly brush strokes and natural variation. Designing helper functions for converting colors/choosing palettes
 - Adding interactivity including the feature for seed sharing and image export

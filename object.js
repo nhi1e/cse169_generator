@@ -180,6 +180,9 @@ class PlantLili {
 	}
 }
 
+// chatgpt: how can i make the fish body more curvy
+// how do i place koi spots naturally on the body
+// how do i make head less pointy
 class Fish {
 	constructor(x, y, bodyW = random(80, 180)) {
 		this.x = x;
